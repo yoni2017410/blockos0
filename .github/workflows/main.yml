@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  minecraft-bedrock:
+    image: itzg/docker-minecraft-bedrock-server:latest
+    container_name: bedrock-server
+    restart: unless-stopped
+    environment:
+      EULA: "TRUE"
+      VERSION: "LATEST"
+      GAMEMODE: "survival"
+      DIFFICULTY: "normal"
+      SERVER_NAME: "My Bedrock Server"
+    ports:
+      - "19132:19132/udp"
+      - "19140-19155:19140-19155/udp"
+    volumes:
+      - ./bedrock-data:/data
